@@ -2,7 +2,7 @@ import configparser
 import os.path
 
 config = configparser.RawConfigParser()
-config.read(os.path.curdir+"\\configurations\\config.ini")
+config.read(r"E:\Selenium_Project\Open_Cart\configurations\config.ini")
 
 class ReadConfig():
     @staticmethod

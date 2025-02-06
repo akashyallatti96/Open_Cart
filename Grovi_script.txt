@@ -1,0 +1,41 @@
+node ('win'){
+    try{
+    
+        def global_variable ="I am value of the GLOBAL variable"
+        stage("Checkout"){
+            //Checkout from the git
+            def local_variable ="I am value of the locaol Variable"
+            bat 'echo Checkout Branch'
+            bat 'echo This is run as build  %BUILD_NUMBER% on the host %NODE_NAME%'
+            bat "echo value of local variable is ${local_variable}"
+        }
+        
+        stage("Build"){
+            //Bild code
+            bat 'echo Building'
+            bat 'echo value is ${global_variable}'
+            
+        }
+    
+        stage("Test"){
+            //Run tests
+            bat 'echo running Tests'
+        }
+        
+        stage("Package"){
+            //Run tests
+            bat 'echo running Package'
+            
+        }
+        
+        stage("Deploy"){
+            //Run tests
+            bat 'Deploy'
+            
+        }
+    }
+    catch(Exception e){
+        bat "echo failed for reason ${e.getMessage()}"
+        
+    }
+}
